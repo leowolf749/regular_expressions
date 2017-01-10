@@ -1,0 +1,14 @@
+
+import test from 'ava';
+
+const validation = require('./hw');
+const data = require('./data');
+
+const fields = ['name', 'phone', 'email', 'address', 'username', 'url', 'ipaddr'];
+
+fields.forEach(field => {
+    test(`successfully validating ${field}`, current => {
+        data.valid[field].map(item => current.true(validation.name(item), `Rejected valid ${field}: '${item}'`));
+        data.invalid[field].map(item => current.false(validation.name(item), `Accepting invalid ${field}: '${item}'`));
+    });
+});
