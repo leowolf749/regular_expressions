@@ -11,7 +11,6 @@ module.exports = {
     name: function (input) {
         let isName = new RegExp('^[A-Za-z]+-*[ A-Za-z]+$').test(input);
         return isName;
-        console.log(input + ' is ' + isName);
     },
     /**
      * A valid phone number may or may not include an area code. If it
@@ -20,8 +19,8 @@ module.exports = {
      * and dashes.
      */
     phone: function (input) {
-        let phoneNum = newRegExp('^[(]*[0-9]*[)]* *[0-9]{3,4} *-*[0-9]{4,7}$').test(input);
-
+        let phoneNum = new RegExp('^[(0-9)]* *[0-9]{3,4} *-*[0-9]{4,7}$').test(input);
+        return phoneNum;
     },
     /**
      * A valid email address includes alphanumeric characters, underscores, 
@@ -29,7 +28,8 @@ module.exports = {
      * domain name.
      */
     email: function (input) {
-
+        let email = new RegExp('^\\w+\\.*\\_*[a-zA-Z]*@{1}\\w+\\.\\w+\\.*\\w*$').test(input);
+        return email;
     },
     /**
      * A valid street address includes a building number, followed by a 
@@ -38,14 +38,16 @@ module.exports = {
      * other information.
      */
     address: function (input) {
-
+        let address = new RegExp('^[0-9]+\\ [a-zA-Z]+\\ [a-zA-Z]+\\ ?[Ave,St,Park,Lane,Blvd]+$').test(input);
+        return address;
     },
     /**
      * A valid username is between four and sixteen characters long and
      * can contain numbers or letters. It must start with a letter.
      */
     username: function (input) {
-
+        let username = new RegExp('^[a-zA-Z][a-zA-Z0-9]{4,16}$').test(input);
+        return username;
     },
     /**
      * A valid URL contains the protocol (http, https) as well as a valid
