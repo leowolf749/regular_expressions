@@ -55,7 +55,8 @@ module.exports = {
      * may not end with a file name.
      */
     url: function (input) {
-
+        let site = new RegExp('^(http){1}[s]?[:][/]{2}[a-zA-Z\\.\\/]*$').test(input);
+        return site;
     },
 
     /**
@@ -63,6 +64,7 @@ module.exports = {
      * each section. Each section can include from one to three digits.
      */
     ipaddr: function (input) {
-
+        let ip = new RegExp('^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$').test(input);
+        return ip;
     },
 };
